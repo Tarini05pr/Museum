@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f7f7f7;
+  background-color: #567f61;
   color: #333;
 }
 
@@ -36,7 +36,7 @@ nav a:hover {
 .staff-member {
   display: flex;
   flex-wrap: wrap;
-  background-color: white;
+  background-color: rgb(155, 185, 167);
   margin-bottom: 2rem;
   padding: 1.5rem;
   border-radius: 10px;
