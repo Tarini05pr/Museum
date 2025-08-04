@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+header {
+  background-color: #2e3a2d;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+nav a {
+  color: #ccc;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.staff-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.staff-member {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.staff-member img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+.staff-member .info {
+  flex: 1;
+}
+
+.staff-member h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #2e3a2d;
+}
+
+.staff-member p {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+footer {
+  background-color: #2e3a2d;
+  color: #ccc;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .staff-member {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .staff-member img {
+    margin: 0 0 1rem 0;
+  }
+
+  .staff-member .info {
+    padding: 0;
+  }
+}
