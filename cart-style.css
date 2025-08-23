@@ -1,0 +1,138 @@
+/* cart-style.css */
+
+/* General Reset */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e9f5ec; /* light minty green background */
+  color: #1b3b1a; /* dark green text */
+}
+
+/* Navbar */
+.navbar {
+  background-color: #1e4620; /* deep forest green */
+  padding: 1rem;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: #dfffe0; /* pale green */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #a3e5a5; /* lighter green hover */
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+  color: #123a12; /* very dark green */
+}
+
+/* Cart Table */
+.cart-table {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: #f0faf2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cart-table th {
+  background-color: #2e7d32; /* bold green header */
+  color: white;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.cart-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #cde3cd;
+}
+
+.cart-table tr:nth-child(even) {
+  background-color: #e4f3e5;
+}
+
+/* Item Thumbnail */
+.thumb {
+  width: 50px;
+  height: auto;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  border: 2px solid #2e7d32;
+  border-radius: 4px;
+}
+
+/* Buttons */
+button {
+  background-color: #2e7d32; /* main green */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #256428; /* darker hover */
+}
+
+/* Summary Box */
+.summary {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #dfffe0; /* pale mint green */
+  border: 2px solid #2e7d32;
+  border-radius: 10px;
+}
+
+.summary p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.summary strong {
+  color: #1e4620;
+}
+
+/* Cart Controls */
+.cart-controls {
+  width: 90%;
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f0faf2;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #cde3cd;
+}
+
+.cart-controls label {
+  font-weight: bold;
+  color: #1b3b1a;
+}
+
+.amount {
+  font-family: monospace;
+  font-weight: bold;
+  color: #154e16;
+}
