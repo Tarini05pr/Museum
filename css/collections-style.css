@@ -1,6 +1,4 @@
-/* ============================
-   Global Styles
-============================ */
+
 body {
   font-family: "Georgia", serif;
   margin: 0;
@@ -10,9 +8,7 @@ body {
   line-height: 1.6;
 }
 
-/* ============================
-   Header + Navigation
-============================ */
+
 header {
   background: linear-gradient(135deg, #0f3d2e, #145a32); /* dark to forest green */
   padding: 1rem 2rem;
@@ -42,9 +38,7 @@ nav a:hover {
   color: #e6ffe6;
 }
 
-/* ============================
-   Collections Buttons
-============================ */
+
 .collections {
   text-align: center;
   margin: 2rem 0;
@@ -68,9 +62,7 @@ nav a:hover {
   transform: scale(1.05);
 }
 
-/* ============================
-   Section Styles
-============================ */
+
 .collection-section {
   display: none; /* toggled by JS */
   padding: 2rem;
@@ -90,9 +82,7 @@ nav a:hover {
   padding-bottom: 0.5rem;
 }
 
-/* ============================
-   Artifact Cards
-============================ */
+
 .artifact, .history-item {
   background-color: #1b3d2f;
   border: 1px solid #2f5f44;
@@ -140,9 +130,6 @@ nav a:hover {
   color: #dceedd;
 }
 
-/* ============================
-   Modal Styles
-============================ */
 .modal {
   display: none; 
   position: fixed;
@@ -176,9 +163,6 @@ nav a:hover {
   color: #e6ffe6;
 }
 
-/* ============================
-   Responsive
-============================ */
 @media (max-width: 768px) {
   .artifact-header {
     display: block;
