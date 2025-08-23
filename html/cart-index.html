@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="../css/cart-style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="collections-index.html">Collections</a></li>
+      <li><a href="staff-index.html">Staff</a></li>
+      <li><a href="shop-index.html">Shop</a></li>
+    </ul>
+  </nav>
+
+  <h1>Your Cart</h1>
+  <div id="cart-container"></div>
+
+  <script>
+    const CART_KEY = 'museumCartV1';
+const TAX_RATE = 0.102;
+const MEMBER_DISCOUNT_RATE = 0.15;
+const SHIPPING_RATE = 25.00;
+
+function readCart() {
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+  catch { return []; }
+}
+
+function writeCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function currency(val) {
+  return (val < 0 
+    ? `(${Math.abs(val).toFixed(2)})` 
+    : `$${val.toFixed(2)}`
+  );
+}
+
+// ====================== STUDENT WORK STARTS HERE =========================
+function render() {
+  let cart = readCart();
+  const container = document.getElementById("cart-container");
+  container.innerHTML = "";
+
+  if (cart.length === 0) {
+    container.innerHTML = "<p>Your cart is empty.</p>";
+    return;
+  }
+
+  // Compute totals
+  let itemTotal = cart.reduce((sum, it) => sum + it.unitPrice * it.qty, 0);
+
+  // Discounts
+  let volumeRate = 0;
+  if (itemTotal >= 200) volumeRate = 0.15;
+  else if (itemTotal >= 100) volumeRate = 0.10;
+  else if (itemTotal >= 50) volumeRate = 0.05;
+
+  let volumeDiscount = itemTotal * volumeRate;
+  let memberDiscount = 0;
+
+  // Mutually exclusive discount enforcement
+  if (volumeRate > 0 && localStorage.getItem("member") === "true") {
+    let useMember = confirm("Both discounts available. Use member discount?");
+    if (useMember) {
+      memberDiscount = itemTotal * MEMBER_DISCOUNT_RATE;
+      volumeDiscount = 0;
+    }
+  } else if (localStorage.getItem("member") === "true") {
+    memberDiscount = itemTotal * MEMBER_DISCOUNT_RATE;
+  }
+
+  let discount = volumeDiscount + memberDiscount;
+
+  // Shipping
+  let shipping = SHIPPING_RATE;
+
+  let subTotal = itemTotal - discount + shipping;
+  let taxAmount = subTotal * TAX_RATE;
+  let invoiceTotal = subTotal + taxAmount;
+
+  // Build table
+  let html = `
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Item</th><th>Qty</th><th>Unit Price</th><th>Line Total</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  cart.forEach((it, idx) => {
+    let lineTotal = it.unitPrice * it.qty;
+    html += `
+      <tr>
+        <td><img src="${it.image}" class="thumb"> ${it.name}</td>
+        <td>${it.qty}</td>
+        <td class="amount">${currency(it.unitPrice)}</td>
+        <td class="amount">${currency(lineTotal)}</td>
+        <td><button onclick="removeItem(${idx})">Remove</button></td>
+      </tr>
+    `;
+  });
+
+  html += `</tbody></table>`;
+
+  // Summary
+  html += `
+    <div class="summary">
+      <p>Item Total: <span class="amount">${currency(itemTotal)}</span></p>
+      <p>Volume Discount: <span class="amount">${currency(-volumeDiscount)}</span></p>
+      <p>Member Discount: <span class="amount">${currency(-memberDiscount)}</span></p>
+      <p>Shipping: <span class="amount">${currency(shipping)}</span></p>
+      <p>Taxable Subtotal: <span class="amount">${currency(subTotal)}</span></p>
+      <p>Tax (${(TAX_RATE*100).toFixed(1)}%): <span class="amount">${currency(taxAmount)}</span></p>
+      <p><strong>Invoice Total:</strong> <span class="amount">${currency(invoiceTotal)}</span></p>
+    </div>
+    <div class="cart-controls">
+      <button onclick="clearCart()">Clear Cart</button>
+      <button onclick="location.href='shop.html'">Keep Shopping</button>
+      <label><input type="checkbox" id="memberCheck"> Museum Member</label>
+    </div>
+  `;
+
+  container.innerHTML = html;
+
+  // restore checkbox
+  document.getElementById("memberCheck").checked = localStorage.getItem("member") === "true";
+  document.getElementById("memberCheck").addEventListener("change", e => {
+    localStorage.setItem("member", e.target.checked);
+    render();
+  });
+}
+
+function removeItem(idx) {
+  let cart = readCart();
+  cart.splice(idx, 1);
+  writeCart(cart);
+  render();
+}
+
+function clearCart() {
+  writeCart([]);
+  render();
+}
+
+render();
+
+  </script>
+  <footer>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #aaa;">
+      This is a fictitious website created purely for academic purposes. The content on this site was conceived by a human and created by AI. The images were created by AI and curated, edited, reviewed, verified, validated and augmented by a human.
+    </p>
+  </footer>
+</body>
+</html>
