@@ -22,12 +22,12 @@
   </header>
 
   <main class="collections-container">
-    <p class="collections-intro">Explore our growing archive of ancient worlds. Exhibit pages are coming soon.</p>
     
     
     <div class="collections">
-      <button onclick="showSection('archaeology')">Archaeology</button>
-      <button onclick="showSection('anthropology')">Anthropology</button>
+      <button onclick="showSection('archaeology')" id = "btn-archaeology">Archaeology</button>
+      <button onclick="showSection('anthropology')" id = "btn-anthropology">Anthropology</button>
+      <button onclick="showSection('histories')" id = "btn-histories">Histories</button>
     </div>
 
     
@@ -37,7 +37,7 @@
       
       <article class="artifact">
         <h3>Artifact 1</h3>
-        <img src="../images/collections/arch-artifact1.png" alt="Artifact 1" class="artifact-img">
+        <img src="../images/collections/arch-artifact1.png" alt="Artifact 1" class="artifact-img open-modal-card" data-modal-target="#modal-artifact-viracocha">
         <ul>
           <li><strong>Name:</strong> The Viracocha Sun Tablet</li>
           <li><strong>Material:</strong> Andesite stone (fine-grained volcanic rock)</li>
@@ -59,7 +59,10 @@
 
       <article class="artifact">
         <h3>Artifact 2</h3>
-        <img src="../images/collections/arch-artifact2.png" alt="Artifact 2" class="artifact-img">
+        <img src="../images/collections/arch-artifact2.png" 
+             alt="Artifact 2" 
+             class="artifact-img open-modal-card" 
+             data-modal-target="#modal-artifact-nok">
         <ul>
           <li><strong>Name:</strong> The Nok Guardian Figurine</li>
           <li><strong>Material:</strong> Terracotta clay, mixed with fine quartz inclusions</li>
@@ -81,7 +84,10 @@
 
       <article class="artifact">
         <h3>Artifact 3</h3>
-        <img src="../images/collections/arch-artifact3.png" alt="Artifact 3" class="artifact-img">
+        <img src="../images/collections/arch-artifact3.png" 
+             alt="Artifact 3" 
+             class="artifact-img open-modal-card" 
+             data-modal-target="#modal-artifact-dagger">
         <ul>
           <li><strong>Name:</strong> The Moon Priest’s Bronze Dagger</li>
           <li><strong>Material:</strong> Cast bronze alloy (copper with 12% tin, trace amounts of arsenic)</li>
@@ -106,10 +112,12 @@
     <section id="anthropology" class="collection-section" style="display:none;">
       <h2>Anthropology Collection</h2>
 
-      <!-- Artifact 4 -->
       <article class="artifact">
         <h3>Artifact 4</h3>
-        <img src="../images/collections/anth-artifact1.png" alt="Artifact 4" class="artifact-img">
+        <img src="../images/collections/anth-artifact1.png" 
+             alt="Artifact 4" 
+             class="artifact-img open-modal-card" 
+             data-modal-target="#modal-artifact-zoomorphic">
         <ul>
           <li><strong>Name:</strong> Zoomorphic Ceramic Vessel (Bovine Form)</li>
           <li><strong>Material:</strong> Terracotta (fired clay)</li>
@@ -129,15 +137,17 @@
         </ul>
       </article>
 
-      <!-- Copy/Paste template for more Anthropology artifacts -->
       <article class="artifact">
         <h3>Artifact 5</h3>
-        <img src="../images/collections/anth-artifact2.png" alt="Artifact 5" class="artifact-img">
+        <img src="../images/collections/anth-artifact2.png" 
+             alt="Artifact 5" 
+             class="artifact-img open-modal-card" 
+             data-modal-target="#modal-artifact-terracotta">
         <ul>
           <li><strong>Name:</strong> The Terracotta Ancestral Vessel</li>
           <li><strong>Material:</strong> Hand-shaped terracotta (reddish-brown clay with coarse grit temper)</li>
           <li><strong>Size/Weight/Shape:</strong> Height: ~34 cm; Width (at widest point): ~18 cm; Weight: ~2.6 kg; Shape: Rounded vessel body tapering into a modeled human face, surmounted by a pointed, conical headdress</li>
-          <li><strong>Estimated Age:</strong> </li>~2,200 years old (estimated through contextual dating with charcoal samples from the excavation layer; no direct carbon dating of the vessel itself since terracotta cannot be C14 tested)
+          <li><strong>Estimated Age:</strong> ~2,200 years old (estimated through contextual dating with charcoal samples from the excavation layer; no direct carbon dating of the vessel itself since terracotta cannot be C14 tested)</li>
           <li><strong>Preservation State:</strong> Nearly complete, minor surface erosion and weathering on facial details, but structurally intact</li>
           <li><strong>Location Found:</strong> Excavated in the Niger River Valley, near present-day Mali (fictional coordinates provided in dig notes: 13.45° N, 4.21° W). Found in a shallow burial pit alongside fragmented animal bones and two small copper ornaments</li>
           <li><strong>Use and Function</strong></li>
@@ -154,7 +164,10 @@
 
       <article class="artifact">
         <h3>Artifact 6</h3>
-        <img src="../images/collections/anth-artifact3.png" alt="Artifact 6" class="artifact-img">
+        <img src="../images/collections/anth-artifact3.png" 
+             alt="Artifact 6" 
+             class="artifact-img open-modal-card" 
+             data-modal-target="#modal-artifact-crescent">
         <ul>
           <li><strong>Name:</strong> The Crescent Guardian Pendant</li>
           <li><strong>Material:</strong> Hammered and cast gold alloy (high purity, ~85–90%, with trace silver and copper)</li>
@@ -174,21 +187,318 @@
         </ul>
       </article>
     </section>
-  </main>
+ 
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
 
-  <footer>
-    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #aaa;">
-      This is a fictitious website created purely for academic purposes. The Content on this site was conceived by a human and created by AI. The images were created by AI and curated, edited, reviewed, verified, validated and augmented by a human.
-    </p>
-  </footer>
+  <div class="modal-item" id="modal-artifact-viracocha" hidden>
+    <h2>Viracocha Sun Tablet</h2>
+    <p>~1,200 Years BP | Cerro Qhapaq, Lake Titicaca | Andesite Stone
+<br>
+This finely carved andesite slab is believed to have served as a ceremonial altar piece dedicated to the deity Viracocha. Excavated from a sealed ritual pit near Lake Titicaca, its sharp iconography and traces of red ochre suggest it was once painted for ceremonial display. Polishing around the central figure indicates repeated ritual handling. The tablet’s imagery—radiant headdress and twin staffs—reflects the Andean “Staff God” tradition, representing cosmic order and divine authority. Accompanying finds, including charred llama bones and ceramic offerings, confirm its votive function. Tool marks reveal use of bronze chisels, linking it to Tiwanaku craft traditions. Its portable form contrasts with monumental temple panels, suggesting localized ritual use.</p>
+  </div>
 
-  <!-- Embedded JavaScript -->
+  <div class="modal-item" id="modal-artifact-nok" hidden>
+    <h2>Nok Guardian Figurine</h2>
+    <p>~2,300 Years BP | Taruga Site, Nigeria | Terracotta with Quartz
+<br>
+This elongated terracotta figure once stood as a ritual guardian within a domestic or community structure. Its enlarged eyes and patterned torso symbolize vigilance and fertility, aligning with Nok traditions of ancestor protection and agricultural prosperity. Excavated from a collapsed foundation wall, the figurine still bears soot traces and resin at its base, evidence of ritual placement near hearths or platforms. Despite erosion to facial features and the loss of one arm, the piece remains stable and expressive. Found alongside pottery, millet grains, and iron-smelting debris, it reflects the daily and spiritual life of its makers. Crafted by hand and fired in an open pit, its unusual tall proportions may reflect a clan-specific style within the Nok tradition.</p>
+  </div>
+
+  <div class="modal-item" id="modal-artifact-dagger" hidden>
+    <h2>Moon Priest’s Bronze Dagger</h2>
+    <p>~3,800 Years BP | Mari, Syria | Bronze Alloy
+<br>
+Recovered beneath a temple platform at ancient Mari, this bronze dagger bears lunar engravings linking it to the cult of Sin, the Mesopotamian moon god. Though structurally sound, the blade’s patina and worn hilt reveal repeated ritual handling rather than combat use. Residues of beeswax and cedar oil suggest it was anointed in ceremonies, while faint channels along the hilt indicate lost inlays of shell or stone. Associated finds—a silver crescent pendant, alabaster jar, and Akkadian tablets—confirm its ritual cache. Cast in a stone mold and cold-worked for refinement, the dagger embodies both metallurgical skill and religious symbolism. Its engraved crescent and rosette motifs signify celestial cycles and divine protection, while its placement beneath the temple sanctum points to consecratory rites. Comparable to daggers at Ur and Ebla, this piece is uniquely tied to Mari’s lunar cult.</p>
+  </div>
+
+  <div class="modal-item" id="modal-artifact-zoomorphic" hidden>
+    <h2>Zoomorphic Ceramic Vessel</h2>
+    <p>~3,000 Years BP | Guerrero Region, Mexico | Terracotta
+<br>
+This hollow-bodied terracotta vessel, shaped as a four-legged bovine, blends practicality with spiritual symbolism. With a spout emerging from its back, the form suggests use in pouring liquids, possibly fermented drinks or ritual libations. While no charred residues remain, the polished rim indicates frequent handling. Incised swirling motifs across the vessel may represent flowing water or spiritual transformation, reinforcing its ceremonial role. Comparable effigy ceramics from the Formative Mesoamerican period connect animal symbolism with fertility and agricultural cycles. Its preservation is exceptional, with no structural cracks despite centuries of burial. The vessel’s discovery within ritual or domestic layers, often near figurines and effigy objects, underscores its dual identity as both functional container and symbolic companion. This bovine effigy reflects the cultural emphasis on sustenance, fertility, and the sacred animal world.</p>
+  </div>
+
+  <div class="modal-item" id="modal-artifact-terracotta" hidden>
+    <h2>Terracotta Ancestral Vessel</h2>
+    <p>~2,200 Years BP | Niger River Valley, Mali | Terracotta
+<br>
+This human-faced terracotta vessel likely embodied an honored ancestor within ritual or funerary contexts. Its rounded body and conical headdress echo themes of authority and mediation, while closed eyes suggest spiritual guardianship. Excavated from a shallow burial pit, the vessel contained ash and charred remains, evidence of repeated libation or burning rites. Blackening along the rim supports ceremonial use involving fire. The craftsmanship—coiled clay strips, incised geometric bands, and carefully sculpted features—displays both artistry and symbolic intent. Associated finds, including copper ornaments and faunal offerings, indicate ritual deposition rather than domestic discard. While stylistically akin to Nok and Ife terracottas, this vessel’s form diverges, highlighting localized traditions in the Niger Valley. Serving both as a container and symbolic figure, it reflects cultural continuity between ancestral veneration and material expression.</p>
+  </div>
+
+  <div class="modal-item" id="modal-artifact-crescent" hidden>
+    <h2>Crescent Guardian Pendant</h2>
+    <p>~1,400 Years BP | Cajamarca Highlands, Peru | Gold Alloy
+<br>
+This hammered gold pendant depicts an anthropomorphic guardian figure seated above a crescent base. Its pristine preservation highlights the durability of high-purity gold, while light wear on the suspension loop suggests it was worn as a necklace by an elite individual. Excavated from a stone-lined burial chamber, the pendant lay across the chest of the deceased, reinforcing its protective function. Incised geometric designs on the crescent likely encoded cosmological or lineage identity, while the crescent itself symbolizes lunar cycles tied to fertility and agriculture. Associated finds—textiles, stirrup-spout ceramics, obsidian blades—underscore the high status of the burial. Cast in a mold and refined with fine chasing, the pendant displays regional craftsmanship that echoes Moche and Lambayeque traditions, yet its lunar focus resonates with broader Andean cosmology. It represents both adornment and spiritual safeguard.</p>
+  </div>
+
+  <section id="histories" class="collection-section" style="display:none;">
+    <h2>Histories</h2>
+  <!-- Viracocha Sun Tablet -->
+<div class="history-item" id="history-viracocha">
+  <div class="artifact-header">
+    <div class="artifact-image">
+      <img src="../images/collections/arch-artifact1.png" alt="Viracocha Sun Tablet">
+    </div>
+    <div class="artifact-details">
+      <h2 class="artifact-title">Viracocha Sun Tablet</h2>
+      <p><strong>Culture:</strong> Tiwanaku (Late Horizon)</p>
+      <p><strong>Estimated Age:</strong> ~600–1000 CE</p>
+      <p><strong>Material:</strong> Stone with ochre pigments</p>
+      <p><strong>Origin:</strong> Lake Titicaca region, Andes</p>
+    </div>
+  </div>
+
+  <div class="artifact-description">
+    <h3>Cultural Phase</h3>
+    <p>The Sun Tablet belongs to the Late Horizon Tiwanaku phase, when stone carving reached symbolic refinement in the high Andes. Its iconography places it in a continuum of sacred stonework stretching from monumental gateways to small, portable talismans. Scholars note that during this phase, ritual offerings often linked natural forces (sun, water, fertility) to political authority, with Viracocha as the unifying deity. This tablet embodies that convergence, bridging state cosmology with local ritual.</p>
+
+    <h3>Excavator Notes</h3>
+    <p>When first uncovered from the sealed pit near Lake Titicaca, the slab’s surface gleamed faintly under the excavation lamps, as if retaining light across the centuries. The lead archaeologist described a “pulse of presence” upon brushing away the final layer of soil, noting the ochre pigments still vivid in recesses of the carvings. Team members reported a hush settling over the dig, broken only by the call of birds from the lake.</p>
+
+    <h3>Interpretive Tension</h3>
+    <p>The artifact oscillates between two identities: monument reduced to miniature, or intimate talisman elevated to monumentality. Was it intended for portable ritual use, or as a symbolic fragment linking local shrines to Tiwanaku’s monumental temples? The polishing suggests handling, yet the deliberate burial indicates consecration beyond daily ritual. The paradox deepens: did burial silence its power, or preserve it for reawakening?</p>
+
+    <h3>Legends or Local Lore</h3>
+    <p>Local Aymara oral traditions tell of Viracocha walking across the lake, leaving behind stones that “carried the breath of the sun.” Some villagers call the tablet Inti Rumi (“Sun Stone”) and speak of its twin still hidden in the lake’s depths, guarding the rising of the dawn. Shamans claim that those who gaze too long into the carved eyes of the central figure may dream of endless stairways, leading upward toward the heavens and downward into the lake’s abyss.</p>
+
+    <h3>Access Warnings</h3>
+    <p>The Sun Tablet is approached with reverence and caution. Elders insist it should not be displayed in direct sunlight, lest the figure’s power “awaken unbidden.” Museum curators often shroud it when moved, maintaining a quiet ritual of covering and uncovering. Some researchers whisper that its ochre traces bleed brighter when humidity rises, an omen interpreted as the deity’s lingering watchfulness. Scholars debate whether its power is symbolic or supernatural, but among local communities, there remains a quiet warning: the Sun Tablet is not just an artifact—it is an emissary of a living god, and must be treated as such.</p>
+  </div>
+</div>
+
+
+<!-- Nok Guardian Figurine -->
+<div class="history-item" id="history-nok">
+  <div class="artifact-header">
+    <div class="artifact-image">
+      <img src="../images/collections/arch-artifact2.png" alt="Nok Guardian Figurine">
+    </div>
+    <div class="artifact-details">
+      <h2 class="artifact-title">Nok Guardian Figurine</h2>
+      <p><strong>Culture:</strong> Middle Nok</p>
+      <p><strong>Estimated Age:</strong> c. 500 BCE – 200 CE</p>
+      <p><strong>Material:</strong> Terracotta</p>
+      <p><strong>Origin:</strong> Taruga, Nigeria</p>
+    </div>
+  </div>
+
+  <div class="artifact-description">
+    <h3>Cultural Phase</h3>
+    <p>The figurine belongs to the Middle Nok cultural phase (c. 500 BCE – 200 CE), a period marked by expanded iron smelting and increasingly elaborate terracotta forms. Guardian figures were often placed at thresholds or storage areas, embodying ancestral protection and agricultural vitality. This phase reflects the Nok’s balance of domestic life with a cosmology deeply rooted in fertility cycles and spiritual guardianship.</p>
+
+    <h3>Excavator Notes</h3>
+    <p>Uncovered from the collapsed foundation of a Taruga dwelling, the figurine emerged slowly from reddish soil. Its wide, hollow eyes seemed to stare back even before the head was fully freed, unsettling several workers. The excavation diary describes the object as “hauntingly watchful,” its carved patterns still crisp despite erosion. Some noted the faint smell of burnt earth around its base, as if the soil itself retained memory of fire.</p>
+
+    <h3>Interpretive Tension</h3>
+    <p>The figurine embodies paradox: an image of strength, yet fractured by time; a household guardian, yet ritually charged. Was it protective in a practical sense—warding off thieves and animals—or spiritual, channeling unseen ancestors? Its position within a wall foundation suggests permanence, but soot traces imply periodic movement near hearths. Its role oscillates between embedded protector and portable participant in ritual.</p>
+
+    <h3>Legends or Local Lore</h3>
+    <p>Among oral traditions in central Nigeria, Nok figures are sometimes called “the watchers.” Elders recount tales of clay beings given life by ancestral breath, their eyes left hollow so spirits could pass through. Some villages whisper of a Nok guardian that once stood immovable, weeping clay tears each time a famine approached. The figurine excavated at Taruga has been nicknamed Uban Daji (“Father of the Forest”) by local storytellers.</p>
+
+    <h3>Access Warnings</h3>
+    <p>Local communities caution against staring too long into the hollow eyes of Nok figures, believing they invite ancestral scrutiny. During transport, excavators wrapped the artifact in woven cloth, following the advice of nearby elders who warned that unshrouded figures can disturb the sleep of those who handle them. Curators describe a subtle unease when placing it under strong light, as if its watchfulness deepens. It is treated with respect not only as art but as a living threshold between human and ancestral domains.</p>
+  </div>
+</div>
+
+
+<!-- Moon Priest’s Bronze Dagger -->
+<div class="history-item" id="history-olmec" >
+  <div class="artifact-header">
+    <div class="artifact-image">
+      <img src="../images/collections/arch-artifact3.png" alt="Moon Priest’s Bronze Dagger">
+    </div>
+    <div class="artifact-details">
+      <h2 class="artifact-title">Moon Priest’s Bronze Dagger</h2>
+      <p><strong>Culture:</strong> Middle Bronze Age Mesopotamia</p>
+      <p><strong>Estimated Age:</strong> ~1800 BCE</p>
+      <p><strong>Material:</strong> Cast bronze alloy</p>
+      <p><strong>Origin:</strong> Mari, Euphrates Valley</p>
+    </div>
+  </div>
+
+  <div class="artifact-description">
+    <h3>Cultural Phase</h3>
+    <p>This dagger belongs to the Middle Bronze Age Mesopotamian ritual phase (c. 1800 BCE), when metallurgy expanded beyond weapons and tools into sacred instruments. Mari, a prominent city-state on the Euphrates, integrated religious and political authority, and ritual weaponry symbolized divine sanction of rulers and priests. Lunar motifs connect this dagger directly to the cult of Sin, anchoring it within a phase of temple-centered ceremonial practices.</p>
+
+    <h3>Excavator Notes</h3>
+    <p>Found within a sealed chamber beneath a temple platform, the dagger was wrapped in soil darkened by centuries of dampness. When brushed clean, its crescent engravings gleamed faintly despite their age. One archaeologist wrote of “the impression of being handed an object still warm from ritual use,” noting the unexpected preservation of the blade’s edge. The associated finds—silver ornament and Akkadian tablets—lent an air of sanctity to the discovery.</p>
+
+    <h3>Interpretive Tension</h3>
+    <p>The dagger blurs lines between weapon and votive object. Its sharpness suggests utility, yet absence of battle wear indicates ceremonial use. Was it ever drawn in blood, or only in sacred gesture? Engravings evoke protection, yet burial beneath the sanctum implies permanent dedication to the gods, severing its worldly function. The paradox lies in its dual potential: tool of violence or vessel of peace.</p>
+
+    <h3>Legends or Local Lore</h3>
+    <p>Later Mesopotamian folklore speaks of the “Moon Blade of Mari,” said to glow under the light of the crescent moon. Priests were rumored to anoint it with oil and beeswax to “feed its spirit,” and it was believed capable of cutting not flesh but shadows. Some stories claim that daggers like this were laid to rest with the moon god’s blessing, ensuring the city’s protection against drought and invasion.</p>
+
+    <h3>Access Warnings</h3>
+    <p>Scholars and locals alike view lunar artifacts with caution. At Mari, elders warned that disturbing temple caches risked drawing the moon god’s gaze, bringing insomnia or visions. Curators handling the dagger observe a protocol of covering it during transport, mirroring ancient dedication rites. Some visitors report a faint chill when viewing it by moonlight, and exhibition notes advise respectful silence. To many, it remains not merely a dagger, but a fragment of living ritual power.</p>
+  </div>
+</div>
+
+
+<!-- Zoomorphic Ceramic Vessel -->
+<div class="history-item" id="history-egyptian">
+  <div class="artifact-header">
+    <div class="artifact-image">
+      <img src="../images/collections/anth-artifact1.png" alt="Zoomorphic Ceramic Vessel">
+    </div>
+    <div class="artifact-details">
+      <h2 class="artifact-title">Zoomorphic Ceramic Vessel</h2>
+      <p><strong>Culture:</strong> Formative Mesoamerican</p>
+      <p><strong>Estimated Age:</strong> c. 1200–800 BCE</p>
+      <p><strong>Material:</strong> Ceramic</p>
+      <p><strong>Origin:</strong> Guerrero, Mesoamerica</p>
+    </div>
+  </div>
+
+  <div class="artifact-description">
+    <h3>Cultural Phase</h3>
+    <p>The vessel belongs to the Formative Mesoamerican phase (c. 1200–800 BCE), a period when effigy ceramics flourished as symbols of fertility and ritual sustenance. Animal-shaped vessels were central to ceremonies honoring agricultural cycles, embodying the deep bond between humans, animals, and the cosmos. Its bovine form suggests reverence for cattle as symbols of nourishment and life force.</p>
+
+    <h3>Excavator Notes</h3>
+    <p>The vessel belongs to the Formative Mesoamerican phase (c. 1200–800 BCE), a period when effigy ceramics flourished as symbols of fertility and ritual sustenance. Animal-shaped vessels were central to ceremonies honoring agricultural cycles, embodying the deep bond between humans, animals, and the cosmos. Its bovine form suggests reverence for cattle as symbols of nourishment and life force.</p>
+
+    <h3>Interpretive Tension</h3>
+    <p>Is the vessel primarily utilitarian or sacred? The absence of soot suggests little use with fire, yet wear around the spout indicates frequent handling. Perhaps it poured libations in rituals rather than serving daily needs. Its animal form raises ambiguity: is it representation, vessel, or participant? Such duality makes it a paradox—both container and contained spirit.</p>
+
+    <h3>Legends or Local Lore</h3>
+    <p>Regional myths speak of “clay animals that drank the sorrows of their people.” Some stories tell of vessels shaped as cattle that carried the life force of entire villages, broken only during times of great renewal. Farmers in Guerrero still tell of ceramic bulls buried beneath fields to ensure rains. The vessel, nicknamed Toro de Agua (“Water Bull”), is said to carry the breath of rivers within its hollow body.</p>
+
+    <h3>Access Warnings</h3>
+    <p>Local tradition warns against pouring modern liquids into ancient vessels, believing it awakens dormant spirits. Excavators were advised not to whistle while carrying it, lest the vessel “answer back.” In exhibition spaces, curators handle it with gloves and maintain a quiet ritual of acknowledgment before placing it on display. Its presence is treated as more than artifact—an animal spirit bound in clay.</p>
+  </div>
+</div>
+
+
+<!-- Terracotta Ancestral Vessel -->
+<div class="history-item" id="history-cuneiform">
+  <div class="artifact-header">
+    <div class="artifact-image">
+      <img src="../images/collections/anth-artifact2.png" alt="Terracotta Ancestral Vessel">
+    </div>
+    <div class="artifact-details">
+      <h2 class="artifact-title">Terracotta Ancestral Vessel</h2>
+      <p><strong>Culture:</strong> Niger Valley Ritual Terracotta</p>
+      <p><strong>Estimated Age:</strong> ~200 BCE – 200 CE</p>
+      <p><strong>Material:</strong> Terracotta</p>
+      <p><strong>Origin:</strong> Niger River Valley</p>
+    </div>
+  </div>
+
+  <div class="artifact-description">
+    <h3>Cultural Phase</h3>
+    <p>This vessel belongs to the Niger Valley Ritual Terracotta phase (~200 BCE – 200 CE), an era marked by ancestor veneration and complex funerary practices. Human-faced vessels functioned as symbolic mediators, connecting the living with ancestral guardianship. The pointed headdress suggests social hierarchy, possibly priestly or clan leadership.</p>
+
+    <h3>Excavator Notes</h3>
+    <p>Excavators described the moment of uncovering as strangely solemn. The vessel’s human face appeared slowly from the soil, eyes closed as though in meditation. One field note recalls “the impression of unearthing not pottery, but a resting elder.” Its association with copper ornaments and animal bones emphasized its ceremonial significance, leaving excavators awed by its silent authority.</p>
+
+    <h3>Interpretive Tension</h3>
+    <p>Is the vessel primarily a container or a portrait? Its structure allows for libations, yet the modeled face renders it symbolic. Ash residues inside suggest repeated offerings, but burial context frames it as funerary. This ambiguity—practical vessel or ancestral effigy—embodies the paradox of material culture serving both utility and transcendence.</p>
+
+    <h3>Legends or Local Lore</h3>
+    <p>Local lore speaks of “clay ancestors” who kept vigil in the earth, their closed eyes dreaming for the living. Some Niger River communities tell of vessels that whispered to priests when filled with smoke, their conical headdresses said to channel voices of the beyond. Elders identify such pieces as Mai Ruhu (“Vessels of Spirit”), and some claim that breaking one releases ancestral protection back into the land.</p>
+
+    <h3>Access Warnings</h3>
+    <p>Elders in the Niger region caution against touching the faces of terracotta vessels, fearing it disturbs ancestral rest. Excavators followed local advice by sprinkling libation water before lifting it from the soil. In museum display, curators often orient the vessel’s gaze slightly downward, avoiding direct confrontation with viewers. Reverence surrounds it still—as both container of offerings and living ancestor.</p>
+  </div>
+</div>
+
+
+<!-- Crescent Guardian Pendant -->
+<div class="history-item" id="history-arch">
+  <div class="artifact-header">
+    <div class="artifact-image">
+      <img src="../images/collections/anth-artifact3.png" alt="Crescent Guardian Pendant">
+    </div>
+    <div class="artifact-details">
+      <h2 class="artifact-title">Crescent Guardian Pendant</h2>
+      <p><strong>Culture:</strong> Late Andean Highland Elite</p>
+      <p><strong>Estimated Age:</strong> ~600 CE</p>
+      <p><strong>Material:</strong> Gold</p>
+      <p><strong>Origin:</strong> Andean Highlands</p>
+    </div>
+  </div>
+
+  <div class="artifact-description">
+    <h3>Cultural Phase</h3>
+    <p>This pendant emerges from the Late Andean Highland Elite phase (~600 CE), when goldwork served as both adornment and spiritual armor. The crescent-lunar form reflects agricultural and cosmological cycles, while the anthropomorphic guardian suggests divine intercession on behalf of the wearer.</p>
+
+    <h3>Excavator Notes</h3>
+    <p>Discovered in a stone-lined burial chamber, the pendant lay across the chest of its owner, still gleaming after centuries. Excavators noted the uncanny sense of intimacy, as though the guardian figure had continued its watch even in death. One archaeologist described “a golden breath rising” when sunlight first touched its surface. The burial assemblage confirmed the deceased’s high status, yet the pendant commanded the strongest presence.</p>
+
+    <h3>Interpretive Tension</h3>
+    <p>Was the pendant protective amulet or marker of status? Its placement on the body suggests guardianship in death, yet its refined workmanship marks social prestige. The crescent implies lunar cycles of fertility, yet also links to warfare and rulership in Andean symbology. The pendant straddles identities: ornament, shield, deity.</p>
+
+    <h3>Legends or Local Lore</h3>
+    <p>Local traditions recall pendants called Illapa Kuna (“Guardians of the Moonlight”), believed to grant visions during lunar ceremonies. Some say such pendants allowed wearers to walk between worlds, guiding crops and dreams alike. Highland myths tell of gold guardians who wept silver tears during eclipses, protecting communities from cosmic imbalance. The crescent base of this pendant echoes those stories, symbolizing the curve of both moon and horizon.</p>
+
+    <h3>Access Warnings</h3>
+    <p>Local communities treat golden crescents with caution, believing they hold echoes of lunar cycles. Elders warn against wearing replicas under a new moon, lest they invite imbalance. Curators transport the pendant only under protective coverings, mindful of traditions that gold objects can “call the moonlight indoors.” It remains more than ornament—an active guardian whose presence is approached with awe and restraint.</p>
+  </div>
+</div>
+</section>
   <script>
-    function showSection(section) {
-      const sections = document.querySelectorAll('.collection-section');
-      sections.forEach(s => s.style.display = 'none');
-      document.getElementById(section).style.display = 'block';
+  (function () {
+    const modal = document.getElementById("modal");
+    const modalBody = document.getElementById("modal-body");
+
+    // Expose for inline handlers
+    window.showSection = function showSection(id) {
+      document.querySelectorAll('.collection-section').forEach(sec => sec.style.display = 'none');
+      const sec = document.getElementById(id);
+      if (sec) sec.style.display = 'block';
+    };
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modalBody.innerHTML = "";
     }
-  </script>
+    window.closeModal = closeModal;
+
+    // Event delegation: works for images, buttons, future elements
+    document.addEventListener("click", function (e) {
+      const trigger = e.target.closest(".open-modal-card");
+      if (trigger) {
+        e.preventDefault();
+        const targetSelector = trigger.getAttribute("data-modal-target");
+        if (!targetSelector) return;
+        const source = document.querySelector(targetSelector);
+        if (!source) return;
+        modalBody.innerHTML = source.innerHTML;
+        modal.classList.add("is-open");
+        return;
+      }
+
+      // Click outside (overlay) closes
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  })();
+  document.getElementById("btn-archaeology").addEventListener("click", () => {
+  document.getElementById("archaeology").style.display = "block";
+  document.getElementById("anthropology").style.display = "none";
+  document.getElementById("histories").style.display = "none";
+});
+
+document.getElementById("btn-anthropology").addEventListener("click", () => {
+  document.getElementById("anthropology").style.display = "block";
+  document.getElementById("archaeology").style.display = "none";
+  document.getElementById("histories").style.display = "none";
+});
+
+document.getElementById("btn-histories").addEventListener("click", () => {
+  document.getElementById("histories").style.display = "block";
+  document.getElementById("archaeology").style.display = "none";
+  document.getElementById("anthropology").style.display = "none";
+});
+
+</script>
+
 </body>
 </html>
